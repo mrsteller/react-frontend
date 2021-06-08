@@ -1,11 +1,11 @@
 import React from "react";
 import { Box, Container, CssBaseline, Typography } from "@material-ui/core";
-import { BlueLayout } from "./blue-layout";
+import { BlueLayout } from "./list-component/blue-layout";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { Theme } from "./theme";
 import "@fontsource/lato";
 import "@fontsource/montserrat";
-import { FormFileList } from "./form-file-list";
+import { FormFileList } from "./list-component";
 
 type MainProps = { id?: string };
 
