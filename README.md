@@ -1,2 +1,3 @@
 # Example work
-Using React, Material-UI and hooks
+
+Using React, Material-UI and functional components
