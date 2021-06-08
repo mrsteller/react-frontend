@@ -1,2 +1,2 @@
-# react-frontend
-A few examples of my react work
+# Example work
+Using React, Material-UI and hooks
