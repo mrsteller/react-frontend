@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Container, CssBaseline, Typography } from "@material-ui/core";
 import { BlueLayout } from "./list-component/blue-layout";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { Theme } from "./theme";
 import "@fontsource/lato";
 import "@fontsource/montserrat";
-import { FormFileList } from "./list-component";
+import { FormFileList, ConfirmationAlert } from "./list-component";
 
 type MainProps = { id?: string };
 
 export const Main = (props: MainProps) => {
   const { id } = props;
+  const list = { forms, files, requiredFiles, fileTypeOptions };
+
+  const [openLockedForm, setOpenLockedForm] = useState(null);
+
+  const openForm = (form: any) => {
+    form.locked ? setOpenLockedForm(form.id) : console.log(form);
+  };
+
+  const unlock = () => {
+    const formIndex = list.forms.findIndex((f) => f.id === openLockedForm);
+    setOpenLockedForm(null);
+  };
 
   return (
     <ThemeProvider theme={Theme}>
@@ -23,9 +35,21 @@ export const Main = (props: MainProps) => {
                 This is where all your forms and files are kept.
               </Typography>
             </Box>
+            {openLockedForm !== null && (
+              <ConfirmationAlert
+                confirmationText="You will need to resign this form after opening it."
+                handleSubmit={unlock}
+                handleCancel={() => setOpenLockedForm(null)}
+                title={"Unlock Form"}
+                buttonText={{
+                  primary: "Accept",
+                  secondary: "Cancel",
+                }}
+              />
+            )}
             <FormFileList
               {...{
-                list: { forms, files, requiredFiles, fileTypeOptions },
+                list: list,
                 download: (e) => console.log(e),
                 print: (e) => console.log(e),
                 handleClickItem: (e) => console.log(e),

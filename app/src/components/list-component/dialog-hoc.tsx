@@ -5,14 +5,12 @@ import {
   DialogActions,
   IconButton,
   Button,
-  TextField,
-  Box,
   Dialog,
   Fab,
   useMediaQuery,
 } from "@material-ui/core";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import { Theme as theme } from "./theme";
+import { Theme as theme } from ".././theme";
 import { Close, Add } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme: Theme) =>
